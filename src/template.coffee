@@ -1,3 +1,4 @@
+_ = require 'lodash'
 ReturnValue = require 'nanocyte-component-return-value'
 
 class Template extends ReturnValue
@@ -8,7 +9,7 @@ class Template extends ReturnValue
 
     key = "text" if !key?
 
-    message[key] = template
+    _.set message, key, template
     return message
 
 module.exports = Template

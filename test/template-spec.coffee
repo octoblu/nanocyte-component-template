@@ -18,8 +18,10 @@ describe 'Template', ->
             template: "anything"
             key: null
           message: "somethingElse"
+
       it 'should return the message with the key defaulted to text', ->
         expect(@sut.onEnvelope(@envelope)).to.deep.equal @response
+
     describe 'when called with a template and a key', ->
       beforeEach ->
         @response =
@@ -29,8 +31,10 @@ describe 'Template', ->
             template: "anything"
             key: "atemplate"
           message: "somethingElse"
+
       it 'should return the message with the key assigned', ->
         expect(@sut.onEnvelope(@envelope)).to.deep.equal @response
+
     describe 'when called with a blank template and a key', ->
       beforeEach ->
         @response =
@@ -40,5 +44,20 @@ describe 'Template', ->
             template: null
             key: "atemplate"
           message: "somethingElse"
+
+      it 'should return the message with the key assigned', ->
+        expect(@sut.onEnvelope(@envelope)).to.deep.equal @response
+
+    describe 'when called with a template and a deep key', ->
+      beforeEach ->
+        @response =
+          nested:
+            squirrel: 'HI'
+
+        @envelope =
+          config:
+            template: 'HI'
+            key: 'nested.squirrel'
+
       it 'should return the message with the key assigned', ->
         expect(@sut.onEnvelope(@envelope)).to.deep.equal @response
