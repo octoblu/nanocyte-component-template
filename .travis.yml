@@ -17,7 +17,5 @@ deploy:
     tags: true
     branches: true
 after_success:
+- npm run coverage
 - bash <(curl -s https://codecov.io/bash)
-branches:
-  only:
-  - "/^v[0-9]/"
