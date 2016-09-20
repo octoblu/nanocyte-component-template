@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.11'
+- '5'
 addons:
   code_climate:
     repo_token: a0b76736c007aaa3f99484088475544e415e8fa060165a272721b1d0781b9850
@@ -21,3 +21,6 @@ after_success:
 - npm run mocha:json
 - bash <(curl -s https://codecov.io/bash)
 - bash <(curl -s https://codecov.octoblu.com/bash)
+branches:
+  only:
+  - "/^v[0-9]/"
